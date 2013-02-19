@@ -50,6 +50,15 @@ class BlogCategoryEntry extends DataExtension {
    public function getAllBlogCategories(){
        return $this->owner->Parent()->BlogCategories();
    }
+
+   /**
+    * @return BlogCategoryCloud
+    */
+   public function getBlogCategoryCloud() {
+     return BlogCategoryCloud::create()
+        ->setHolderId($this->owner->ParentID)
+        ->setLimit(10);
+   }
     
 }
 
