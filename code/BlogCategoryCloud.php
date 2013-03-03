@@ -124,7 +124,7 @@ class BlogCategoryCloud_Category extends ViewableData {
 
 	protected $maxEntryCount;
 
-	protected $classLevels = 6;
+	protected $classLevels = 10;
 
 	public function __construct($category, $entryCount, $totalCount, $maxEntryCount) {
 		parent::__construct();
@@ -182,7 +182,7 @@ class BlogCategoryCloud_Category extends ViewableData {
 	 * @return Int
 	 */
 	public function getLevel() {
-		return round($this->getFrequency()*$this->classLevels);
+		return ceil($this->getFrequency()*$this->classLevels);
 	}
 
 }
