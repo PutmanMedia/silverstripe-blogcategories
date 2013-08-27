@@ -53,7 +53,27 @@ class BlogCategory extends DataObject {
                             new TextField('Title','Title')
                         );
     }
-    
+
+	public function canView($member = null) {
+		return $this->canEdit($member);
+	}
+
+	public function canEdit($member = null) {
+		$parent = $this->Parent();
+		if($parent && $parent->canEdit()) return true;
+
+		return Permission::check('ADMIN', 'any', $member);
+	}
+
+	public function canDelete($member = null) {
+		return $this->canEdit($member);
+	}
+
+	public function canCreate($member = null) {
+		return $this->canEdit($member);
+	}
+
+
     //Set URLSegment to be unique on write
     function onBeforeWrite(){
         // If there is no URLSegment set, generate one from Title
