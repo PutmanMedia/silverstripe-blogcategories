@@ -55,22 +55,31 @@ class BlogCategory extends DataObject {
     }
 
 	public function canView($member = null) {
-		return $this->canEdit($member);
+		$parent = $this->Parent();
+		if($parent && $parent->canView($member)) return true;
+
+		return parent::canView($member);
 	}
 
 	public function canEdit($member = null) {
 		$parent = $this->Parent();
 		if($parent && $parent->canEdit($member)) return true;
 
-		return Permission::check('ADMIN', 'any', $member);
+		return parent::canEdit($member);
 	}
 
 	public function canDelete($member = null) {
-		return $this->canEdit($member);
+		$parent = $this->Parent();
+		if($parent && $parent->canDelete($member)) return true;
+
+		return parent::canDelete($member);
 	}
 
 	public function canCreate($member = null) {
-		return $this->canEdit($member);
+		$parent = $this->Parent();
+		if($parent && $parent->canCreate($member)) return true;
+
+		return parent::canCreate($member);
 	}
 
 
