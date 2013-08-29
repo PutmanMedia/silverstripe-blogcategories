@@ -60,7 +60,7 @@ class BlogCategory extends DataObject {
 
 	public function canEdit($member = null) {
 		$parent = $this->Parent();
-		if($parent && $parent->canEdit()) return true;
+		if($parent && $parent->canEdit($member)) return true;
 
 		return Permission::check('ADMIN', 'any', $member);
 	}
