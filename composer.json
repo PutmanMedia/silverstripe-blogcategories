@@ -1,5 +1,5 @@
 {
-  "name": "ioti/blogcategories",
+  "name": "PutmanMedia/blogcategories",
 	"description": "Adds a manageable list of categories to the SilverStripe blog Module",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "blog", "taxonomy", "tags", "categories"],
